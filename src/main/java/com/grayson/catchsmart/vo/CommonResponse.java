@@ -33,10 +33,10 @@ public class CommonResponse<T> {
     private String message;
     private T data;
 
-    public CommonResponse(boolean result, String message, T data){
+    public CommonResponse(boolean result, CodeAndMsg codeMsg, T data){
         this.result = result;
-        this.code = CodeAndMsg.SUCCESS.getCode();
-        this.message = message;
+        this.code = codeMsg.getCode();
+        this.message = codeMsg.getMsg();
         this.data = data;
     }
 

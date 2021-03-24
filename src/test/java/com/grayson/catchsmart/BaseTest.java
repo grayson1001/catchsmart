@@ -1,13 +1,9 @@
 package com.grayson.catchsmart;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-class CatchsmartApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
+public class BaseTest {
 
 }

@@ -36,14 +36,19 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler<T> {
     @ResponseStatus(HttpStatus.OK)
     public CommonResponse sendSuccessResponse(){
-        return new CommonResponse(true,  null, null);
+        return new CommonResponse(true,  CodeAndMsg.SUCCESS, null);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    public CommonResponse sendSuccessResponse(T data){
+        return new CommonResponse(true,  CodeAndMsg.SUCCESS, data);
     }
 
 
     @ExceptionHandler(BusinessException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public CommonResponse sendErrorResponse_UserDefined(Exception exception){
-        return new CommonResponse(false, ((BusinessException)exception).getException(), "nothing", null);
+        return new CommonResponse(false, ((BusinessException)exception).getException(), null);
     }
 
     @ExceptionHandler(Exception.class)
@@ -53,7 +58,7 @@ public class GlobalExceptionHandler<T> {
             return this.sendErrorResponse_UserDefined(exception);
         }
 
-        return new CommonResponse(false, CodeAndMsg.UNKNOWEXCEPTION.getCode(), null);
+        return new CommonResponse(false, CodeAndMsg.UNKNOWEXCEPTION, null);
     }
 
 }

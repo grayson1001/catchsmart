@@ -18,6 +18,11 @@ public enum CodeAndMsg {
     }
 
     public CodeAndMsg getCodeEnum(int code){
+        for (CodeAndMsg codeMsg: CodeAndMsg.values()) {
+            if(codeMsg.code == code){
+                return codeMsg;
+            }
+        }
         return null;
     }
 
